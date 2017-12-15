@@ -24,10 +24,8 @@ class Toggle extends Component{
     _keyExtractor = (item,index) => item.title;
     
 
-    toggleList =  (title) => {
-        
+    toggleList = (title) => {
         this.props.SelectionAction(title);
-        
     }
 
     componentWillReceiveProps(nextProps){
@@ -39,8 +37,6 @@ class Toggle extends Component{
         const item = this.props.peoples[0];
         return (
             <View style={styles.containerStyle}>
-            {/* <Text> {this.state.selected}  </Text> */}
-            {/* <Button onPress={() => {this.toggleList('some title')}} title={'change state'} /> */}
                {
                    this.props && this.props.peoples  ? 
                         <FlatList  
