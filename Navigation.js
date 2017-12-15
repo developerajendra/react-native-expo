@@ -34,6 +34,8 @@ const HomeStack  = StackNavigator({
             tabBarIcon:<Entypo name="home" size={25} style={{color:'#fff'}} />
         }
     }
+}, {
+    initialRouteName: 'Toggle'
 });
 
 const Navigation = TabNavigator({

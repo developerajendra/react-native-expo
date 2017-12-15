@@ -39,7 +39,7 @@ class Toggle extends Component{
         const item = this.props.peoples[0];
         return (
             <View style={styles.containerStyle}>
-            <Text> {this.state.selected}  </Text>
+            {/* <Text> {this.state.selected}  </Text> */}
             {/* <Button onPress={() => {this.toggleList('some title')}} title={'change state'} /> */}
                {
                    this.props && this.props.peoples  ? 

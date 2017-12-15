@@ -4,9 +4,13 @@ import {
     View,
     Image,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+    Dimensions,
+    StyleSheet,
+    LayoutAnimation
     } from "react-native";
     
+    const _window = Dimensions.get('window');
  
  class Contact extends Component {
     // const { title, image} = props;
@@ -19,25 +23,39 @@ import {
         
     }
 
-   
+    componentWillUpdate(){
+        LayoutAnimation.easeInEaseOut();
+    }
 
    render(){
-       console.log("selected", )
     return (
-        <View style={{flex:1,padding:10}} >
+        <View style={{flex:1,padding:10, borderBottomColor: '#ccc', borderBottomWidth: 1}} >
             <TouchableOpacity onPress={ () => { 
                 this.props.onToggleList(this.props.title)}
                 } style={{flex:1,flexDirection:'row', alignItems:'center'}}> 
-                <Image  style={{width: 130, height: 130,borderRadius:65}} source={{uri: this.props.image}} / >
+                <Image  style={{width: 40, height: 40,borderRadius:20}} source={{uri: this.props.image}} / >
                 <Text style={{paddingLeft:10,fontSize:25}}>{this.props.title}</Text>
             </TouchableOpacity>
-            <View style={{flex:1}}>
-            {this.props.selected == this.props.title && <Image  style={{flex:1, width: 300, height: 300}} source={{uri:  this.props.image}} / > }
+            <View style={style.imageWrapper}>
+            {this.props.selected == this.props.title && <Image resizeMode={'contain'}  style={style.image} source={{uri:  this.props.image}} / > }
             </View> 
            
         </View>
     )
    }
 }
+
+const style = StyleSheet.create({
+    imageWrapper: {
+        flex: 1,
+        paddingTop: 10
+    },
+    image: {
+        flex: 1,
+        alignSelf: 'stretch',
+        width: _window.width-30,
+        height: _window.width,
+    }
+})
  
 export default Contact ;
