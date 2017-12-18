@@ -13,6 +13,12 @@ const Home = (props)=> {
               <TouchableOpacity onPress={() => props.navigation.navigate('Toggle')}>
                 <Text style={{fontSize:40, color:'#ccc',fontWeight:'bold'}}>Redux</Text>
               </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => props.navigation.navigate('Contacts')}>
+                <Text style={{fontSize:40, color:'#ccc',fontWeight:'bold'}}>Contacts</Text>
+              </TouchableOpacity>
+
+              
            
             <TouchableOpacity>
                 <Text style={{fontSize:40, color:'#ccc',fontWeight:'bold'}}>Flex Box</Text>

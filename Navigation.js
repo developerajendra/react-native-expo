@@ -35,7 +35,7 @@ const HomeStack  = StackNavigator({
         }
     }
 }, {
-    initialRouteName: 'Toggle'
+    // initialRouteName: 'Toggle'
 });
 
 const Navigation = TabNavigator({
@@ -63,7 +63,7 @@ const Navigation = TabNavigator({
         }
     }
 },{
-     initialRouteName:  'Home',
+     initialRouteName:  'Contacts',
     //   tabBarPosition: 'top',
     animationEnabled: true,
     swipeEnabled: true,

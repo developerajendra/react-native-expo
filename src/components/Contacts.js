@@ -8,6 +8,8 @@ import {
 import Header from "./Header";
 
 import  Contact  from "./common/Contact";
+
+import Expo, { Permissions } from "expo";
  
 class Contacts extends Component{
     constructor(props) {
@@ -20,7 +22,33 @@ class Contacts extends Component{
     }
     componentWillMount(){
         console.log("componentWillMount",);
-        this.getPeoplesDetail();
+        // this.getPeoplesDetail();
+        this.getcontacts();
+    }
+
+    getcontacts = async () => {
+        console.log("yes....");
+         
+        const permission = await Expo.Permissions.askAsync(Expo.Permissions.CONTACTS);
+
+            
+            if(permission.status !== "granted"){
+                return;
+            }
+
+            const contacts = await Expo.Contacts.getContactsAsync({
+                fields : [
+                    Expo.Contacts.PHONE_NUMBERS
+                   
+                ],
+                pageSize: 10000,
+                pageOffset: 0
+            });
+        
+            console.log("permission...", contacts);
+
+            this.setState({userData: contacts.data});
+        
     }
 
     componentDidMount(){
@@ -55,7 +83,7 @@ class Contacts extends Component{
         });
     }
  
-    _keyExtractor = (item, index) => item.title;
+    _keyExtractor = (item, index) => item.firstName;
 
     render() {
         return (
@@ -65,7 +93,7 @@ class Contacts extends Component{
                    this.state.userData ?  <FlatList
                     data={this.state.userData}
                     keyExtractor={this._keyExtractor}
-                    renderItem={({item})=> <Contact image={item.image} title={item.title}  /> }
+                    renderItem={({item})=> <Contact image={item.id} title={item.firstName}  /> }
                 /> : <Text>Loading...</Text>
                 }
             </View>
